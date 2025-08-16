@@ -17,11 +17,11 @@ Copiloto conversacional para subir hasta 5 PDFs y hacer preguntas en lenguaje na
 ![Diagrama de Arquitectura](docs/arquitectura_catchai.png)
 
 Streamlit (UI)
-- POST /ingest  ──▶ FastAPI ── PyMuPDF ── Chunking ── Embeddings ─▶ Chroma (persist)
-- POST /chat    ──▶ FastAPI ── Retrieve top-k ── Prompt orquestado (Devuelve respuesta + fuentes) ─▶ Gemini
-- GET  /summaries ─▶ FastAPI ── Gemini (resumen por doc)
-- POST /compare   ─▶ FastAPI ── Gemini (comparación 2 docs)
-- GET  /topics    ─▶ FastAPI ── KMeans (clusters) + Gemini (etiquetas)
+- POST /ingest  → FastAPI ── PyMuPDF ── Chunking ── Embeddings → Chroma (persist)
+- POST /chat    → FastAPI ── Retrieve top-k ── Prompt orquestado (Devuelve respuesta + fuentes) → Gemini
+- GET  /summaries → FastAPI ── Gemini (resumen por doc)
+- POST /compare   → FastAPI ── Gemini (comparación 2 docs)
+- GET  /topics    → FastAPI ── KMeans (clusters) + Gemini (etiquetas)
 
 ### Orquestación: Flujo conversacional
 **INGESTA**
