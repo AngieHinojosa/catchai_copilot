@@ -87,21 +87,17 @@ Streamlit (UI)
 `streamlit run streamlit_app.py`
 
 ## Estructura de carpetas
-.
-├─ backend/
-│  ├─ app/
-│  │  ├─ main.py            # FastAPI endpoints
-│  │  ├─ schemas.py         # Pydantic models
-│  │  ├─ chunking.py        # PDF → texto → chunks
-│  │  └─ rag.py             # Chroma, embeddings, búsqueda, Gemini helpers
-│  └─ ...
-├─ frontend/
-│  └─ streamlit_app.py      # UI principal
-├─ data/
-│  └─ chroma/               # Persistencia de vectores
-├─ docker-compose.yml
-├─ .env                      # GOOGLE_API_KEY
-└─ README.md
+**backend/app/**
+- main.py → FastAPI endpoints
+- schemas.py → Pydantic models
+- chunking.py → PDF → texto → chunks
+- rag.py → Chroma, embeddings, búsqueda, Gemini helpers
+
+**frontend/**
+- streamlit_app.py → UI principal
+
+**data/**
+- chroma/ → Persistencia de vectores
 
 ## Uso en la UI
 1. Subir PDFs y pulsar Procesar → “Documentos indexados”.
