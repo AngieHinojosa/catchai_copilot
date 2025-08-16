@@ -1,0 +1,40 @@
+services:
+  api:
+    image: python:3.11-slim
+    working_dir: /app/backend
+    env_file:
+      - .env
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - ./:/app
+    command: >
+      bash -lc "
+      pip install --no-cache-dir fastapi uvicorn[standard] python-multipart pydantic==2.* chromadb pymupdf scikit-learn google-genai &&
+      uvicorn app.main:app --host 0.0.0.0 --port 8000
+      "
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD-SHELL", "python - << 'PY'\nimport urllib.request, sys\ntry:\n  urllib.request.urlopen('http://localhost:8000/docs', timeout=3)\n  sys.exit(0)\nexcept Exception:\n  sys.exit(1)\nPY"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  ui:
+    image: python:3.11-slim
+    working_dir: /app/frontend
+    environment:
+      - API_URL=http://api:8000
+    volumes:
+      - ./:/app
+    command: >
+      bash -lc "
+      pip install --no-cache-dir streamlit requests &&
+      streamlit run streamlit_app.py --server.port=8501 --server.address=0.0.0.0
+      "
+    ports:
+      - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy

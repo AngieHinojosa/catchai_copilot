@@ -1,0 +1,51 @@
+# Entornos virtuales
+venv/
+.env
+*.env
+
+# Archivos de configuración sensibles
+.env.local
+.env.*.local
+
+# Datos persistentes
+data/chroma/
+data/*.db
+
+# Archivos temporales
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+
+# Compilaciones / distribuciones
+build/
+dist/
+*.egg-info/
+
+# Cache de Streamlit
+frontend/.streamlit/
+
+# Configuración IDE
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# índices/vector stores y temporales
+data/
+backend/app/storage/
+*.bin
+*.pt
+*.onnx
+*.npy
+*.npz
+__pycache__/
+*.pyc
+.env
+.env.*
+.cache/
+.streamlit/
