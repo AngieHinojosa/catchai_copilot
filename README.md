@@ -1,4 +1,4 @@
-# CatchAI Copilot
+# Copilot Demo
 
 Copiloto conversacional para subir hasta 5 PDFs y hacer preguntas en lenguaje natural sobre su contenido. Las respuestas son contextuales y muestran pasajes usados. Incluye resúmenes, comparación entre documentos y agrupación por temas.
 
